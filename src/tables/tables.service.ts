@@ -12,8 +12,10 @@ import { Table } from './entities/table.entity';
 export class TablesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  create(dto: CreateTableDto): Promise<Table> {
-    return this.prisma.table.create({ data: dto });
+  async create(dto: CreateTableDto): Promise<Table> {
+    return this.prisma.table
+      .create({ data: dto })
+      .catch(this.handleErrorConstraintUnique);
   }
 
   findAll(): Promise<Table[]> {
@@ -49,7 +51,9 @@ export class TablesService {
   async update(id: string, dto: UpdateTableDto): Promise<Table> {
     await this.verifyIdAndReturnTable(id);
 
-    return this.prisma.table.update({ where: { id }, data: dto });
+    return this.prisma.table
+      .update({ where: { id }, data: dto })
+      .catch(this.handleErrorConstraintUnique);
   }
 
   async remove(id: string) {
