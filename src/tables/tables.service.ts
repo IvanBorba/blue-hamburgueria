@@ -37,6 +37,10 @@ export class TablesService {
   handleErrorConstraintUnique(error: Error): never {
     const splitedMessage = error.message.split('`');
 
+    console.log(4);
+    console.log(5);
+    console.log(6);
+
     const errorMessage = `Entrada '${
       splitedMessage[splitedMessage.length - 2]
     }' não está respeitando a constraint UNIQUE`;
