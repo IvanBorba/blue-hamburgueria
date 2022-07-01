@@ -25,6 +25,9 @@ export class TablesService {
   }
 
   remove(id: string) {
-    return `This action removes a #${id} table`;
+    return this.prisma.table.delete({
+      where: { id },
+      select: { number: true, id: true },
+    });
   }
 }
