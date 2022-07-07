@@ -58,4 +58,18 @@ export class ProductsService {
   unfav(id: string) {
     return this.prisma.favorite.delete({ where: { id } });
   }
+
+  async findUsersLiked(id: string) {
+    const product: Product = await this.prisma.product.findUnique({
+      where: { id },
+    });
+
+    return this.prisma.favorite.findMany({
+      where: { productName: product.name },
+      select: {
+        productName: true,
+        user: { select: { id: true, email: true } },
+      },
+    });
+  }
 }
