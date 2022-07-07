@@ -62,7 +62,9 @@ export class UsersService {
     return this.verifyIdAndReturnUser(id);
   }
 
-  findFavoriteProducts(id: string): Promise<Favorite[]> {
+  async findFavoriteProducts(id: string): Promise<Favorite[]> {
+    await this.verifyIdAndReturnUser(id);
+
     return this.prisma.favorite.findMany({
       where: { userId: id },
     });
