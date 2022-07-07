@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { handleErrorConstraintUnique } from 'src/utils/handle-error-unique.util';
 import { CreateProductDto } from './dto/create-product.dto';
+import { FavoriteProductDto } from './dto/favorite-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { Product } from './entities/product.entity';
 
@@ -47,5 +48,9 @@ export class ProductsService {
     await this.verifyIdAndReturnProduct(id);
 
     return this.prisma.product.delete({ where: { id } });
+  }
+
+  favorite(dto: FavoriteProductDto) {
+    return this.prisma.favorite.create({ data: dto });
   }
 }
