@@ -5,6 +5,7 @@ import { User } from './entity/users.entity';
 import * as bcrypt from 'bcryptjs';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { handleErrorConstraintUnique } from 'src/utils/handle-error-unique.util';
+import { Favorite } from 'src/favorites/entities/favorite.entity';
 
 @Injectable()
 export class UsersService {
@@ -51,6 +52,12 @@ export class UsersService {
 
   findOne(id: string): Promise<User> {
     return this.verifyIdAndReturnUser(id);
+  }
+
+  findFavoriteProducts(id: string): Promise<Favorite[]> {
+    return this.prisma.favorite.findMany({
+      where: { userId: id },
+    });
   }
 
   async update(id: string, dto: UpdateUserDto): Promise<User | void> {
