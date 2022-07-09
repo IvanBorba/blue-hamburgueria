@@ -43,7 +43,19 @@ export class OrdersService {
   }
 
   findAll() {
-    return `This action returns all orders`;
+    return this.prisma.order.findMany({
+      select: {
+        id: true,
+        createdAt: true,
+        tableNumber: true,
+        userId: true,
+        products: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
   }
 
   findOne(id: string) {
