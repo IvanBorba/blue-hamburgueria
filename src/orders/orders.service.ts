@@ -33,6 +33,11 @@ export class OrdersService {
         createdAt: true,
         tableNumber: true,
         userId: true,
+        user: {
+          select: {
+            name: true,
+          },
+        },
         products: {
           select: {
             name: true,
@@ -49,6 +54,11 @@ export class OrdersService {
         createdAt: true,
         tableNumber: true,
         userId: true,
+        user: {
+          select: {
+            name: true,
+          },
+        },
         products: {
           select: {
             name: true,
@@ -59,6 +69,24 @@ export class OrdersService {
   }
 
   findOne(id: string) {
-    return `This action returns a #${id} order`;
+    return this.prisma.order.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        createdAt: true,
+        tableNumber: true,
+        userId: true,
+        user: {
+          select: {
+            name: true,
+          },
+        },
+        products: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
   }
 }
