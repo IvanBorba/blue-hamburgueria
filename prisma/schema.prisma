@@ -107,4 +107,5 @@ model Favorite {
   productName String @map("product_name")
 
   @@map("favorite")
+  @@unique([userId, productName])
 }
