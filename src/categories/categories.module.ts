@@ -8,6 +8,6 @@ import { PassportModule } from '@nestjs/passport';
 @Module({
   imports: [PrismaModule, PassportModule.register({ defaultStrategy: 'jwt' })],
   controllers: [CategoriesController],
-  providers: [CategoriesService, JwtStrategy],
+  providers: [CategoriesService],
 })
 export class CategoriesModule {}
