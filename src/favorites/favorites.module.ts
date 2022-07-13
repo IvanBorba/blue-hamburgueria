@@ -8,6 +8,6 @@ import { JwtStrategy } from 'src/auth/jwt.strategy';
 @Module({
   imports: [PrismaModule, PassportModule.register({ defaultStrategy: 'jwt' })],
   controllers: [FavoritesController],
-  providers: [FavoritesService, JwtStrategy],
+  providers: [FavoritesService],
 })
 export class FavoritesModule {}
