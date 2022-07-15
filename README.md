@@ -2,13 +2,14 @@
 
 Projeto Desenvolvido em conjunto com a turma C013 da Blue EdTech.
 Desenvolvemos ele com o intuito de aprender os conceitos para trabalhar com Nest.js + Prisma.
+<br/>
 Trabalhamos também com conceitos de autenticação, filtragem de buscas, documentação de projetos e bancos de dados relacionais.
 
 ## Pré-requisitos
 
 - **Node** com versão superior ou igual que 16.15.0 - [Node Download](https://nodejs.org/pt-br/download/)
 - **NPM** com versão superior ou igual que 8.5.5 - [Npm Download](https://www.npmjs.com/package/download)
-- **Nest.js** com versão superior ou igual que 8.5.5 - [Npm Download](https://docs.nestjs.com/)
+- **Nest.js** com versão superior ou igual que 8.5.5 - [Nest Download](https://docs.nestjs.com/)
 - **PostgreSQL** com versão superior ou igual que 8.2.6 - [PostgreSQL Download](https://www.postgresql.org/download/)
 
 ## Instalação
