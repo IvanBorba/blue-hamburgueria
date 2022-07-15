@@ -53,6 +53,8 @@ DATABASE_URL="postgresql://postgres:101112@localhost:5432/hamburgueria"
 
 Para acessar a lista de endpoints e funcionalidades da aplicação, acesse nossa documentação do [Swagger](https://blue-hamburgueria-production.up.railway.app/docs/), lá você poderá testar todas as rotas.
 
+Você também pode analisar nosso <a href="./db.pdf" download>Diagrama de Relacionamento de Entidades</a>
+
 ## Autores
 
 - Ivan Gabriel de Borba
