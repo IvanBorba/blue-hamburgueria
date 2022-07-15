@@ -45,8 +45,7 @@ $ npm run start:dev
 
 Para conseguir trabalhar com o banco de dados você deverá criar um arquivo .env e adicionar uma url de conexão com seu Postgres local com a chave DATABASE_URL.
 
-```bash
-#!/bin/bash
+```md
 DATABASE_URL="postgresql://postgres:101112@localhost:5432/hamburgueria"
 ```
 
