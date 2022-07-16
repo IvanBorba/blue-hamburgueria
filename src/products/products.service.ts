@@ -27,9 +27,7 @@ export class ProductsService {
       });
 
     if (products.length === 0) {
-      throw new NotFoundException(
-        'Nenhuma entrada encontrada com o query param aplicado',
-      );
+      throw new NotFoundException('Nenhuma entrada encontrada');
     }
 
     return products;
