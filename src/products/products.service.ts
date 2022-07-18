@@ -20,8 +20,26 @@ export class ProductsService {
   }
 
   async findAll(query: Partial<Product>): Promise<Product[]> {
+    // query inicial: { name: "tal", categoryId: "duashduiashdas" }
+
+    // objetivo de query final: { name: { contains: "tal" }, categoryId: { contains: "duashduiashdas" } }
+
+    const keysAndValuesArray = Object.entries(query);
+    console.log('keysAndValuesArray: ', keysAndValuesArray);
+    // keysAndValuesArray: [["name", "tal"], ["categoryId", "duashduiashdas"]]
+
+    const newObjectArray = keysAndValuesArray.map((element) => {
+      return [element[0], { contains: element[1], mode: 'insensitive' }];
+    });
+    console.log(newObjectArray);
+    // newObjectArray: [["name", { contains: "tal" }], ["categoryId", { contains: "duashduiashdas" }]]
+
+    const newQueryObject = Object.fromEntries(newObjectArray);
+    console.log(newQueryObject);
+    // newQueryObject: { name: { contains: "tal"}, categoryId: { contains: "duashduiashdas" } }
+
     const products: Product[] = await this.prisma.product
-      .findMany({ where: query })
+      .findMany({ where: newQueryObject })
       .catch(() => {
         throw new UnprocessableEntityException('Formato de query inválida');
       });

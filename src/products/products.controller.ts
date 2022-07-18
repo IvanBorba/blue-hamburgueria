@@ -36,6 +36,7 @@ export class ProductsController {
     summary: 'Listagem de produtos',
   })
   findAll(@Query() query: Partial<Product>): Promise<Product[]> {
+    console.log(query);
     return this.productsService.findAll(query);
   }
 
